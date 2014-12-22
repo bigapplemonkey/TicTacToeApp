@@ -29,15 +29,16 @@
         href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
         rel="stylesheet" type="text/css">
 
-    <script
-        src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    %{--<script--}%
+    %{--src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>--}%
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-
+    <g:layoutHead/>
+    %{--<r:layoutResources/>--}%
 </head>
 
 <body id="page-top" class="index">
@@ -60,10 +61,10 @@
         <div class="collapse navbar-collapse"
              id="bs-example-navbar-collapse-1">
             %{--<ul class="nav navbar-nav navbar-right">--}%
-                %{--<li class="hidden"><a href="#page-top"></a></li>--}%
-                %{--<li class="page-scroll"><a href="#portfolio">Portfolio</a></li>--}%
-                %{--<li class="page-scroll"><a href="#about">About</a></li>--}%
-                %{--<li class="page-scroll"><a href="#contact">Contact</a></li>--}%
+            %{--<li class="hidden"><a href="#page-top"></a></li>--}%
+            %{--<li class="page-scroll"><a href="#portfolio">Portfolio</a></li>--}%
+            %{--<li class="page-scroll"><a href="#about">About</a></li>--}%
+            %{--<li class="page-scroll"><a href="#contact">Contact</a></li>--}%
             %{--</ul>--}%
         </div>
         <!-- /.navbar-collapse -->
@@ -80,31 +81,31 @@
 
 %{--<!-- Portfolio Grid Section -->--}%
 %{--<section id="portfolio">--}%
-    %{--<div class="container">--}%
-        %{--<div class="row">--}%
-            %{--<div class="col-lg-12 text-center">--}%
-                %{--<h3>Instructions</h3>--}%
-                %{--<hr class="star-primary">--}%
-            %{--</div>--}%
-        %{--</div>--}%
-    %{--</div>--}%
+%{--<div class="container">--}%
+%{--<div class="row">--}%
+%{--<div class="col-lg-12 text-center">--}%
+%{--<h3>Instructions</h3>--}%
+%{--<hr class="star-primary">--}%
+%{--</div>--}%
+%{--</div>--}%
+%{--</div>--}%
 
-    %{--<div class="row">--}%
-        %{--<div class="col-lg-12 text-center">--}%
-            %{--<p>Welcome to my Tic-Tac-Toe, in order to play please:<br/>--}%
-                %{--- Pick a game option from the top of the board:<br/>--}%
-                %{--Player Vs Player, Computer Vs Player<br/>--}%
-                %{--or Player Vs Computer<br/>--}%
-                %{--Player Vs Player would be the default option.<br/>--}%
-                %{--- Click Start.<br/>--}%
-                %{--- Click on a square. Computer will play <br/>--}%
-                %{--automatically.<br/>--}%
-                %{--- Continue playing till there is a winner <br/>--}%
-                %{--or till the board has been filled. <br/>--}%
-                %{--- Click Restart if you want to quit or start<br/>--}%
-                %{--a new game.</p>--}%
-        %{--</div>--}%
-    %{--</div>--}%
+%{--<div class="row">--}%
+%{--<div class="col-lg-12 text-center">--}%
+%{--<p>Welcome to my Tic-Tac-Toe, in order to play please:<br/>--}%
+%{--- Pick a game option from the top of the board:<br/>--}%
+%{--Player Vs Player, Computer Vs Player<br/>--}%
+%{--or Player Vs Computer<br/>--}%
+%{--Player Vs Player would be the default option.<br/>--}%
+%{--- Click Start.<br/>--}%
+%{--- Click on a square. Computer will play <br/>--}%
+%{--automatically.<br/>--}%
+%{--- Continue playing till there is a winner <br/>--}%
+%{--or till the board has been filled. <br/>--}%
+%{--- Click Restart if you want to quit or start<br/>--}%
+%{--a new game.</p>--}%
+%{--</div>--}%
+%{--</div>--}%
 %{--</section>--}%
 
 <!-- Footer -->
@@ -127,7 +128,9 @@
 </div>
 
 <g:javascript src="tictactoe.js"/>
-
+%{--<g:javascript library="application"--}%
+<g:javascript library="jquery" plugin="jquery"/>
+<r:layoutResources/>
 </body>
 
 </html>

@@ -31,9 +31,9 @@ grails.mime.types = [
 
 // URL Mapping Cache Max Size, defaults to 5000
 //grails.urlmapping.cache.maxsize = 1000
-
+grails.views.javascript.library="jquery"
 // What URL patterns should be processed by the resources plugin
-grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*']
+grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*', '/startbootstrap/css/*', '/startbootstrap/img/*']
 
 // The default codec used to encode data with ${}
 grails.views.default.codec = "none" // none, html, base64

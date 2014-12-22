@@ -51,13 +51,13 @@ class TicTacToeService {
     //this methods triggers calculations for the Minimax algorithm
     //this is the root for the first tree
     // it returns a string representing the cell that should be picked
-    public String jorgeMove(Map<String, Integer> board, int currentPlayer, int initialPlayer) {
+    public String computerMove(Map<String, Integer> board, int currentPlayer, int initialPlayer) {
 
         String nextMove = ""
         List<String> freeCells = freeCells(board)
         List<String> currentFreeCells = []
         int currentScore
-        int bestScore = -1
+        int score = -1
         Integer depth = null
 
         if (freeCells.size() == 8) {
@@ -70,25 +70,30 @@ class TicTacToeService {
             boardClon.put(it, currentPlayer)
             currentFreeCells = freeCells.minus(it)
 
-            currentScore = jorgeMiniMax(boardClon, currentPlayer * -1, initialPlayer, 1, depth, currentFreeCells)
+            currentScore = miniMax(boardClon, currentPlayer * -1, initialPlayer, 1, depth, currentFreeCells)
 
-            if (currentScore >= bestScore) {
-                bestScore = currentScore
+            if (currentScore >= score) {
+                score = currentScore
                 nextMove = it
             }
         }
         return nextMove
     }
 
-    public int jorgeMiniMax(Map<String, Integer> board, int currentPlayer, int initialPlayer, int level, Integer depth = null, List<String> freeCells) {
+    //recursive calls to all the paths in the tree
+    public int miniMax(Map<String, Integer> board, int currentPlayer, int initialPlayer, int level, Integer depth = null, List<String> freeCells) {
         List<String> currentFreeCells = []
         int result = isWin(board)
+        int mult = 1
+        if (currentPlayer != initialPlayer) {
+            mult = -1
+        }
 
+        //base cases, tree leaves
         if (result == 0) {
             if (freeCells.isEmpty()) {
                 return 0
             }
-
         }
         else {
             if (result == initialPlayer) {
@@ -106,32 +111,23 @@ class TicTacToeService {
             depth -= 1
         }
 
-        int counter = 0
-        int maxScore = -1;
+        int score = -1;
         int thisScore;
 
         freeCells.each {
-            ++counter
             Map<String, Integer> currentBoard = [:]
             currentBoard.putAll(board)
             currentBoard.put(it, currentPlayer);
             currentFreeCells = freeCells.minus(it)
-            thisScore = jorgeMiniMax(currentBoard, currentPlayer * -1, initialPlayer, ++level, depth, currentFreeCells);
-            if (currentPlayer != initialPlayer) {
-                thisScore = thisScore * -1
-            }
+            thisScore = miniMax(currentBoard, currentPlayer * -1, initialPlayer, ++level, depth, currentFreeCells);
+            thisScore = thisScore * mult
 
-
-            if (thisScore >= maxScore) {
-                maxScore = thisScore;
+            if (thisScore >= score) {
+                score = thisScore;
             }
         }
-
-        if (currentPlayer != initialPlayer) {
-            maxScore = maxScore * -1
-        }
-
-        return maxScore;
+        score = score * mult
+        return score;
     }
 
     // returns a list of strings representing the available cells
